@@ -1,0 +1,15 @@
+pe\edu\pucp\inf30\stockify\dao\usuario\EmpresaDAO.class
+pe\edu\pucp\inf30\stockify\daoimpl\BaseDAO.class
+pe\edu\pucp\inf30\stockify\dao\almacen\LineaGuiaRemisionDAO.class
+pe\edu\pucp\inf30\stockify\dao\almacen\ProductoDAO.class
+pe\edu\pucp\inf30\stockify\daoimpl\almacen\ExistenciasDAOImpl.class
+pe\edu\pucp\inf30\stockify\dao\almacen\GuiaRemisionDAO.class
+pe\edu\pucp\inf30\stockify\dao\almacen\MovimientoDAO.class
+pe\edu\pucp\inf30\stockify\dao\Persistible.class
+pe\edu\pucp\inf30\stockify\dao\almacen\ExistenciasDAO.class
+pe\edu\pucp\inf30\stockify\daoimpl\ComandoDAO.class
+pe\edu\pucp\inf30\stockify\daoimpl\almacen\LineaGuiaRemisionDAOImpl.class
+pe\edu\pucp\inf30\stockify\daoimpl\almacen\ProductoDAOImpl.class
+pe\edu\pucp\inf30\stockify\daoimpl\usuario\EmpresaDAOImpl.class
+pe\edu\pucp\inf30\stockify\daoimpl\almacen\GuiaRemisionDAOImpl.class
+pe\edu\pucp\inf30\stockify\daoimpl\almacen\MovimientoDAOImpl.class

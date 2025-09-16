@@ -1,0 +1,12 @@
+pe\edu\pucp\inf30\stockifydbmanager\dbfactoryprovider\utils\TipoDB.class
+pe\edu\pucp\inf30\stockifydbmanager\dbfactoryprovider\MySQLDBManagerFactory.class
+pe\edu\pucp\inf30\stockifydbmanager\dbfactoryprovider\DBManager.class
+pe\edu\pucp\inf30\stockifydbmanager\dbfactoryprovider\utils\CadenaConexion$Builder.class
+pe\edu\pucp\inf30\stockifydbmanager\dbfactoryprovider\DBFactoryProvider$1.class
+pe\edu\pucp\inf30\stockifydbmanager\dbfactoryprovider\DBManagerFactory.class
+pe\edu\pucp\inf30\stockifydbmanager\dbfactoryprovider\MSSQLDBManagerFactory.class
+pe\edu\pucp\inf30\stockifydbmanager\dbfactoryprovider\DBFactoryProvider.class
+pe\edu\pucp\inf30\stockifydbmanager\dbfactoryprovider\utils\CadenaConexion.class
+pe\edu\pucp\inf30\stockifydbmanager\dbfactoryprovider\utils\CadenaConexion$1.class
+pe\edu\pucp\inf30\stockifydbmanager\dbfactoryprovider\MSSQLDBManager.class
+pe\edu\pucp\inf30\stockifydbmanager\dbfactoryprovider\MySQLDBManager.class
