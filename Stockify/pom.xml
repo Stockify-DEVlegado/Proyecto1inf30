@@ -71,7 +71,7 @@
           
     
     <module>StockifyBO</module>
-      
+    <module>StockifyPruebas</module>
   </modules>
         
 

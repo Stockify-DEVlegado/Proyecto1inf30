@@ -8,13 +8,15 @@ public class CuentaUsuario {
     private String password; 
     private Date ultimoAcceso;
 
-    public CuentaUsuario() {}
+    public CuentaUsuario() {
+        this.ultimoAcceso = new Date();
+    }
 
-    public CuentaUsuario(int idCuentaUsuario, String username, String password, Date ultimoAcceso) {
+    public CuentaUsuario(int idCuentaUsuario, String username, String password) {
         this.idCuentaUsuario = idCuentaUsuario;
         this.username = username;
         this.password = password;
-        this.ultimoAcceso = ultimoAcceso;
+        this.ultimoAcceso = new Date();
     }
 
     public int getIdCuentaUsuario() {

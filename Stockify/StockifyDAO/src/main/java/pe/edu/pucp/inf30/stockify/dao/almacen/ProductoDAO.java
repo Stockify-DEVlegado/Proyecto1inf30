@@ -7,7 +7,7 @@ import pe.edu.pucp.inf30.stockify.dao.Persistible;
 import pe.edu.pucp.inf30.stockify.model.almacen.Producto;
 /**
  *
- * @author patri
+ * @author patrick
  */
 public interface ProductoDAO extends Persistible<Producto, Integer> {
     

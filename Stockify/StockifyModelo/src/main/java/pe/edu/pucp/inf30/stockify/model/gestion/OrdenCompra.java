@@ -17,13 +17,15 @@ public class OrdenCompra {
     private Empresa proveedor;
     private List<LineaOrdenCompra> lineas;
 
-    public OrdenCompra() {}
+    public OrdenCompra() {
+        this.fecha = new Date();
+    }
 
-    public OrdenCompra(int idOrdenCompra, double total, Date fecha, Estado estado,
+    public OrdenCompra(int idOrdenCompra, double total, Estado estado,
                        Empresa proveedor, List<LineaOrdenCompra> lineas) {
         this.idOrdenCompra = idOrdenCompra;
         this.total = total;
-        this.fecha = fecha;
+        this.fecha = new Date();   
         this.estado = estado;
         this.proveedor = proveedor;
         this.lineas = lineas;

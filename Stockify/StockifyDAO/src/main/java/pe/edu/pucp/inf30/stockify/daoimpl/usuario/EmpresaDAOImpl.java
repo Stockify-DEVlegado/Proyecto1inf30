@@ -16,7 +16,7 @@ import pe.edu.pucp.inf30.stockify.model.usuario.Empresa;
 
 /**
  *
- * @author patri
+ * @author patrick
  */
 public class EmpresaDAOImpl extends BaseDAO<Empresa> implements EmpresaDAO {
     @Override
@@ -24,18 +24,24 @@ public class EmpresaDAOImpl extends BaseDAO<Empresa> implements EmpresaDAO {
             throws SQLException {
         
         String sql = 
-                "INSERT INTO PRODUCTO("
+                "INSERT INTO Empresa("
+                + " idEmpresa, "
+                + " tipoDocumento, "
                 + " razonSocial, "
                 + " telefono, "
                 + " email, "
-                + " activo) "
-                + "VALUES (?, ?, ?, ?)";
+                + " activo, "
+                + " tipoEmpresa) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement cmd = conn.prepareStatement(sql, 
                 Statement.RETURN_GENERATED_KEYS);
-        cmd.setString(1, modelo.getRazonSocial());
-        cmd.setString(2, modelo.getTelefono());
-        cmd.setString(3, modelo.getEmail());
-        cmd.setBoolean(4, modelo.isActivo());
+        cmd.setInt(1, modelo.getIdEmpresa());
+        cmd.setString(2, String.valueOf(modelo.getTipoDocumento()));
+        cmd.setString(3, modelo.getRazonSocial());
+        cmd.setString(4, modelo.getTelefono());
+        cmd.setString(5, modelo.getEmail());
+        cmd.setBoolean(6, modelo.isActivo());
+        cmd.setString(7, String.valueOf(modelo.getTipoEmpresa()));
         return cmd;
     }
      
@@ -44,20 +50,24 @@ public class EmpresaDAOImpl extends BaseDAO<Empresa> implements EmpresaDAO {
             Empresa modelo) throws SQLException {
         
         String sql = 
-                "UPDATE PRODUCTO "
+                "UPDATE Empresa "
                 + "SET "
+                + " tipoDocumento = ?, "
                 + " razonSocial = ?, "
                 + " telefono = ?, "
                 + " email = ?, "
-                + " activo = ? "
+                + " activo = ?, "
+                + " tipoEmpresa = ? "
                 + "WHERE "
-                + " id = ?";
+                + " idEmpresa = ?";
         PreparedStatement cmd = conn.prepareStatement(sql);
-        cmd.setString(1, modelo.getRazonSocial());
-        cmd.setString(2, modelo.getTelefono());
-        cmd.setString(3, modelo.getEmail());
-        cmd.setBoolean(4, modelo.isActivo());
-        cmd.setInt(5, modelo.getIdEmpresa());
+        cmd.setString(1, String.valueOf(modelo.getTipoDocumento()));
+        cmd.setString(2, modelo.getRazonSocial());
+        cmd.setString(3, modelo.getTelefono());
+        cmd.setString(4, modelo.getEmail());
+        cmd.setBoolean(5, modelo.isActivo());
+        cmd.setString(6, String.valueOf(modelo.getTipoEmpresa()));
+        cmd.setInt(7, modelo.getIdEmpresa());
         return cmd;
     }
     
@@ -65,8 +75,8 @@ public class EmpresaDAOImpl extends BaseDAO<Empresa> implements EmpresaDAO {
     protected PreparedStatement comandoEliminar(Connection conn, Integer idEmpresa) throws SQLException {
         String sql = 
                 "DELETE "
-                + "FROM EMPRESA "
-                + "WHERE id = ?";
+                + "FROM Empresa "
+                + "WHERE idEmpresa = ?";
         PreparedStatement cmd = conn.prepareStatement(sql);
         cmd.setInt(1, idEmpresa);
         return cmd;
@@ -76,14 +86,16 @@ public class EmpresaDAOImpl extends BaseDAO<Empresa> implements EmpresaDAO {
     protected PreparedStatement comandoLeer(Connection conn, Integer id) throws SQLException {
         String sql = 
                 "SELECT "
-                + " id,"
+                + " idEmpresa,"
+                + " tipoDocumento,"
                 + " razonSocial,"
                 + " telefono,"
                 + " email, "
                 + " activo "
+                + " tipoEmpresa "
                 + "FROM EMPRESA"
                 + "WHERE "
-                + " id = ?";
+                + " idEmpresa = ?";
         PreparedStatement cmd = conn.prepareStatement(sql);
         cmd.setInt(1, id);
         return cmd;

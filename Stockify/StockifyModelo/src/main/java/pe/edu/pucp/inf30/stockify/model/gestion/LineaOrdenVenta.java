@@ -12,7 +12,9 @@ public class LineaOrdenVenta {
     private int cantidad;
     private double subtotal;
 
-    public LineaOrdenVenta() {}
+    public LineaOrdenVenta() {
+        
+    }
 
     public LineaOrdenVenta(int idLineaOrdenVenta, Producto producto, int cantidad, double subtotal) {
         this.idLineaOrdenVenta = idLineaOrdenVenta;

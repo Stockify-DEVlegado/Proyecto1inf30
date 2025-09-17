@@ -13,16 +13,19 @@ public class OrdenIngreso {
     private int idOrdenIngreso;
     private double total;
     private Date fecha;
+    private Estado estado;
     private Usuario responsable;
     private List<LineaOrdenIngreso> lineas;
 
-    public OrdenIngreso() {}
+    public OrdenIngreso() {
+        this.fecha = new Date();
+    }
 
-    public OrdenIngreso(int idOrdenIngreso, double total, Date fecha, Usuario responsable,
+    public OrdenIngreso(int idOrdenIngreso, double total, Usuario responsable,
                         List<LineaOrdenIngreso> lineas) {
         this.idOrdenIngreso = idOrdenIngreso;
         this.total = total;
-        this.fecha = fecha;
+        this.fecha = new Date();   
         this.responsable = responsable;
         this.lineas = lineas;
     }
@@ -35,6 +38,9 @@ public class OrdenIngreso {
 
     public Date getFecha() { return fecha; }
     public void setFecha(Date fecha) { this.fecha = fecha; }
+    
+    public Estado getEstado() { return estado; }
+    public void setEstado(Estado estado) { this.estado = estado; }
 
     public Usuario getResponsable() { return responsable; }
     public void setResponsable(Usuario responsable) { this.responsable = responsable; }

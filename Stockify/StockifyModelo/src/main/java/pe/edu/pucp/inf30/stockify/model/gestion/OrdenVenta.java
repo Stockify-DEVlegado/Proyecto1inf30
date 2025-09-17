@@ -17,22 +17,38 @@ public class OrdenVenta {
     private List<LineaOrdenVenta> lineas;
 
     // Constructor vacío
-    public OrdenVenta() {}
+    public OrdenVenta() {
+        this.fecha = new Date();
+    }
 
     // Constructor con parámetros
-    public OrdenVenta(int idOrdenVenta, double total, Date fecha, Estado estado,
+    public OrdenVenta(int idOrdenVenta, double total, Estado estado,
                       Empresa cliente, List<LineaOrdenVenta> lineas) {
         this.idOrdenVenta = idOrdenVenta;
         this.total = total;
-        this.fecha = fecha;
+        this.fecha = new Date();
         this.estado = estado;
         this.cliente = cliente;
         this.lineas = lineas;
     }
 
     // Getters y Setters
-    public int getIdOrdenVenta() {
-        return idOrdenVenta;
-    }
+    public int getIdOrdenCompra() { return idOrdenVenta; }
+    public void setIdOrdenCompra(int idOrdenVenta) { this.idOrdenVenta = idOrdenVenta; }
+
+    public double getTotal() { return total; }
+    public void setTotal(double total) { this.total = total; }
+
+    public Date getFecha() { return fecha; }
+    public void setFecha(Date fecha) { this.fecha = fecha; }
+
+    public Estado getEstado() { return estado; }
+    public void setEstado(Estado estado) { this.estado = estado; }
+
+    public Empresa getCliente() { return cliente; }
+    public void setCliente(Empresa cliente) { this.cliente = cliente; }
+
+    public List<LineaOrdenVenta> getLineas() { return lineas; }
+    public void setLineas(List<LineaOrdenVenta> lineas) { this.lineas = lineas; }
 }
 

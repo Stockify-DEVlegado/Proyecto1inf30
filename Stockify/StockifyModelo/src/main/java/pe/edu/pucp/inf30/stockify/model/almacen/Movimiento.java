@@ -4,27 +4,29 @@
  */
 package pe.edu.pucp.inf30.stockify.model.almacen;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import pe.edu.pucp.inf30.stockify.model.personal.TipoUsuario;
 
 public class Movimiento {
     private int idMovimiento;
     private TipoMovimiento tipoMovimiento;
-    private LocalDateTime fecha;
+    private Date fecha;
     private double precioUnitario;
     private double montoTotal;
     private String descripcion;
     private TipoUsuario operario;
     private Producto producto;
 
-    public Movimiento() {}
+    public Movimiento() {
+        this.fecha = new Date();
+    }
 
-    public Movimiento(int idMovimiento, TipoMovimiento tipoMovimiento, LocalDateTime fecha,
+    public Movimiento(int idMovimiento, TipoMovimiento tipoMovimiento,
                        double precioUnitario, double montoTotal, String descripcion,
                        TipoUsuario operario, Producto producto) {
         this.idMovimiento = idMovimiento;
         this.tipoMovimiento = tipoMovimiento;
-        this.fecha = fecha;
+        this.fecha = new Date();
         this.precioUnitario = precioUnitario;
         this.montoTotal = montoTotal;
         this.descripcion = descripcion;
@@ -48,11 +50,11 @@ public class Movimiento {
         this.tipoMovimiento = tipoMovimiento;
     }
 
-    public LocalDateTime getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDateTime fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

@@ -16,23 +16,25 @@ import pe.edu.pucp.inf30.stockify.model.almacen.Producto;
 
 /**
  *
- * @author patri
+ * @author Diego
  */
-public class ProductoDAOImpl extends BaseDAO<Producto> implements ProductoDAO{
+public  class ProductoDAOImpl extends BaseDAO<Producto> implements ProductoDAO {
+
     @Override
-     protected PreparedStatement comandoCrear(Connection conn, Producto modelo) 
+    protected PreparedStatement comandoCrear(Connection conn, Producto modelo)
             throws SQLException {
-        
-        String sql = 
-                "INSERT INTO PRODUCTO("
-                + " id, "
+
+        String sql
+                = "INSERT INTO Producto ("
+                + " idProducto, "
                 + " nombre, "
                 + " descripcion, "
                 + " precio, "
                 + " stockActual, "
-                + " unidadMedida) "
-                + "VALUES (?, ?, ?, ?)";
-        PreparedStatement cmd = conn.prepareStatement(sql, 
+                + " unidadMedida)"
+               // + " historicoProducto) "
+                + "VALUES (?, ?, ?, ?, ?, ?)";
+        PreparedStatement cmd = conn.prepareStatement(sql,
                 Statement.RETURN_GENERATED_KEYS);
         cmd.setInt(1, modelo.getIdProducto());
         cmd.setString(2, modelo.getNombre());
@@ -40,88 +42,94 @@ public class ProductoDAOImpl extends BaseDAO<Producto> implements ProductoDAO{
         cmd.setDouble(4, modelo.getPrecio());
         cmd.setInt(5, modelo.getStockActual());
         cmd.setString(6, modelo.getUnidadMedida());
+  //      cmd.setString(7, String.valueOf(modelo.getHistoricoProducto()));
         return cmd;
     }
-     
+
     @Override
-    protected PreparedStatement comandoActualizar(Connection conn, 
+    protected PreparedStatement comandoActualizar(Connection conn,
             Producto modelo) throws SQLException {
-        
-        String sql = 
-                "UPDATE PRODUCTO "
-                + " id, "
-                + " nombre, "
-                + " descripcion, "
-                + " precio, "
-                + " stockActual, "
-                + " unidadMedida "
+
+        String sql
+                = "UPDATE Producto "
+                + "SET "
+                + " nombre = ?, "
+                + " descripcion = ?, "
+                + " precio = ?, "
+                + " stockActual = ?, "
+                + " unidadMedida = ?"
+              //  + " historicoProducto"
                 + "WHERE "
-                + " id = ?";
+                + " idProducto = ?";
         PreparedStatement cmd = conn.prepareStatement(sql);
-        cmd.setInt(1, modelo.getIdProducto());
-        cmd.setString(2, modelo.getNombre());
-        cmd.setString(3, modelo.getDescripcion());
-        cmd.setDouble(4, modelo.getPrecio());
-        cmd.setInt(5, modelo.getStockActual());
-        cmd.setString(6, modelo.getUnidadMedida());
+        cmd.setString(1, modelo.getNombre());
+        cmd.setString(2, modelo.getDescripcion());
+        cmd.setDouble(3, modelo.getPrecio());
+        cmd.setInt(4, modelo.getStockActual());
+        cmd.setString(5, modelo.getUnidadMedida());
+    //    cmd.setString(6, String.valueOf(modelo.getHistoricoProducto()));
+        cmd.setInt(6, modelo.getIdProducto());
+
         return cmd;
     }
-    
+
     @Override
     protected PreparedStatement comandoEliminar(Connection conn, Integer idEmpresa) throws SQLException {
-        String sql = 
-                "DELETE "
-                + "FROM PRODUCTO "
-                + "WHERE id = ?";
+        String sql
+                = "DELETE "
+                + "FROM Producto "
+                + "WHERE idProducto = ?";
         PreparedStatement cmd = conn.prepareStatement(sql);
         cmd.setInt(1, idEmpresa);
         return cmd;
     }
-    
+
     @Override
     protected PreparedStatement comandoLeer(Connection conn, Integer id) throws SQLException {
-        String sql = 
-                "SELECT "
-                + " id, "
+        String sql
+                = "SELECT "
+                + " idProducto, "
                 + " nombre, "
                 + " descripcion, "
                 + " precio, "
                 + " stockActual, "
                 + " unidadMedida "
+               // + " historicoProducto"
                 + "FROM PRODUCTO"
                 + "WHERE "
-                + " id = ?";
+                + " idProducto = ?";
         PreparedStatement cmd = conn.prepareStatement(sql);
         cmd.setInt(1, id);
         return cmd;
     }
 
-    
-     @Override
+    @Override
     protected PreparedStatement comandoLeerTodos(Connection conn) throws SQLException {
-        String sql = 
-                "SELECT "
-                + " id, "
+        String sql
+                = "SELECT "
+                + " idProducto, "
                 + " nombre, "
                 + " descripcion, "
                 + " precio, "
                 + " stockActual, "
                 + " unidadMedida "
-                + "FROM PRODUCTO";
+             //   + " historicoProducto"
+                + "FROM Producto";
         PreparedStatement cmd = conn.prepareStatement(sql);
         return cmd;
     }
-    
-     @Override
+
+    @Override
     protected Producto mapearModelo(ResultSet rs) throws SQLException {
         Producto producto = new Producto();
-        producto.setIdProducto(rs.getInt("id"));
+        producto.setIdProducto(rs.getInt("idProducto"));
         producto.setNombre(rs.getString("nombre"));
         producto.setDescripcion(rs.getString("descripcion"));
         producto.setPrecio(rs.getDouble("precio"));
         producto.setStockActual(rs.getInt("stockActual"));
         producto.setUnidadMedida(rs.getString("unidadMedida"));
+        
         return producto;
     }
-    
+
 }
